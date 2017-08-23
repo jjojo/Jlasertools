@@ -1,0 +1,14 @@
+<div
+  (dragover)="false"
+  (dragend)="false"
+  (drop)="handleDrop($event)"
+  style="height: 300px; border: 5px dotted #ccc;">
+  <p style="margin: 10px; text-align: center">
+    <strong>Drop Your Images Here</strong>
+  </p>
+</div>
+
+
+  <img class="media-object" src="/assets/img/test/{{image.name}}" style="max-width:200px">
+  <h4 class="media-heading">{{ image.name }}</h4>
+  <p>{{ image.size }} bytes</p>
