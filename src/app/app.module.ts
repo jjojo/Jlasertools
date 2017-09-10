@@ -8,12 +8,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './header/header.component';
 import { ImagePreviewComponent } from './image-preview/image-preview.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const appRoutes: Routes = [
-	{
-		path: '',
-		component: MainComponent
-	}
+  {
+    path: '',
+    component: MainComponent
+  }
 ];
 
 @NgModule({
@@ -21,10 +22,11 @@ const appRoutes: Routes = [
     AppComponent,
     MainComponent,
     HeaderComponent,
-    ImagePreviewComponent
+    ImagePreviewComponent,
+    SettingsComponent
   ],
   imports: [
-		RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes),
     BrowserModule
   ],
   providers: [],
