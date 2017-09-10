@@ -12,7 +12,7 @@ let win = null;
 app.on('ready', function () {
 
   // Initialize the window to our specified dimensions
-  win = new BrowserWindow({width: 1000, height: 600, show: false});
+  win = new BrowserWindow({width: 1200, height: 720, show: false});
 
   // Specify entry point
   if (process.env.PACKAGE === 'true'){

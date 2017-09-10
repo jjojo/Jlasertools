@@ -1,14 +1,14 @@
 <div
   (dragover)="false"
   (dragend)="false"
-  (drop)="handleDrop($event)"
-  style="height: 300px; border: 5px dotted #ccc;">
-  <p style="margin: 10px; text-align: center">
-    <strong>Drop Your Images Here</strong>
-  </p>
+  (drop)="handleDrop($event)">
+  <canvas id="canvas" class="canvas" width="500" height="500">
+    </canvas>
+</div>
+<div *ngIf="image" class="img-preview">
+  <h4>{{ image.name }}</h4>
+  <img src="/assets/img/test/{{image.name}}">
+  <p>{{ image.size }} bytes</p>  
 </div>
 
 
-  <img class="media-object" src="/assets/img/test/{{image.name}}" style="max-width:200px">
-  <h4 class="media-heading">{{ image.name }}</h4>
-  <p>{{ image.size }} bytes</p>
