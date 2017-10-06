@@ -39,6 +39,7 @@ export class ImagePreviewComponent implements OnInit {
   }
 
   handleDrop(e) {
+    console.log(this.canvas)
     this.file = e.dataTransfer.files[0];
     const reader = new FileReader();
     //const filter = new fabric.Image.filters.Grayscale();
@@ -50,35 +51,40 @@ export class ImagePreviewComponent implements OnInit {
         const imgObject = img.set({
           left: 0,
           top: 0,
-          angle: 0
-        }).scale(1);
-        //img.filters.push(filter);
-        //img.applyFilters();
+          angle: 0,
+          scaleX: img.width >= img.height ? (this.canvas.width*0.8) / img.width : 300/img.height,
+          scaleY: img.height >= img.width ? (this.canvas.height*0.8) : 300/img.width
+        });
+      
+        this.image = img;
+        this.setBrightness( 0 );
+        this.blackAndWhiteFilter()
 
         this.canvas.add(imgObject)
-          .renderAll()
+          //.renderAll()
           .setActiveObject(imgObject)
           .toDataURL({format: 'png', quality: 0.8});
 
-        this.image = img;
+        
       });
     };
     reader.readAsDataURL(this.file);
-
+    
     return false;
   }
 
   setBrightness( value ) {
-    if ( typeof(this.image.filters[1]) === 'undefined') {
-      const filter = new fabric.Image.filters.Redify({
+    console.log(this.image)
+    if ( typeof(this.image.filters[0]) === 'undefined') {
+      console.log("sets brightness filter")
+      const filter = new fabric.Image.filters.Brightness({
         brightness: value
       });
       this.image.filters.push(filter);
     } else {
-      this.image.filters[1].brightness = value;
+      console.log("changes brightness filter")
+      this.image.filters[0].brightness = value;
     }
-
-    // Apply filter, then rerender the canvas
     this.image.applyFilters( (img) => {
       this.canvas.renderAll();
     });
@@ -122,12 +128,5 @@ export class ImagePreviewComponent implements OnInit {
         context.putImageData(imageData, 0, 0);
       }
     });
-  // this.image.filters.push(
-  //   new fabric.Image.filters.BlackAndWhite(this.image)
-  // );
-  // console.log(this.image);
-  // this.image.applyFilters( (img) => {
-  //     this.canvas.renderAll();
-  //   });
   }
 }
