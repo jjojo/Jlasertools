@@ -3,7 +3,7 @@
     <form>
       <div class="form-group">
         <label for="name">Brightness</label>
-        <md-slider
+        <mat-slider
           (input)="onBrightnessChange($event)"
           (mouseup)="setBrightness()"
           class="example-margin"
@@ -12,7 +12,7 @@
           [min]="min"
           [step]="step"
           [value]="value">
-        </md-slider>
+        </mat-slider>
       </div>
       {{bValue}}
  

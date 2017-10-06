@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { ImagePreviewComponent } from './image-preview/image-preview.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ImageService } from './services/image.service';
-import { MdSliderModule } from '@angular/material';
+import { MatSliderModule } from '@angular/material';
 
 /* Routing */
 
@@ -32,9 +32,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    MdSliderModule
+    MatSliderModule
   ],
-  exports: [MdSliderModule],
+  exports: [MatSliderModule],
   providers: [ImageService],
   bootstrap: [AppComponent]
 })

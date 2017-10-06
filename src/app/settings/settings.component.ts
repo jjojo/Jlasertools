@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MdSliderModule} from '@angular/material';
+import { MatSliderModule } from '@angular/material';
 import { ImageService } from '../services/image.service';
 
 @Component({
