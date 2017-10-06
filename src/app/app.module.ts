@@ -1,14 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
-/* Routing */
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './header/header.component';
 import { ImagePreviewComponent } from './image-preview/image-preview.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ImageService } from './services/image.service';
+import { MatSliderModule } from '@angular/material';
+
+/* Routing */
 
 const appRoutes: Routes = [
   {
@@ -27,9 +30,12 @@ const appRoutes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    MatSliderModule
   ],
-  providers: [],
+  exports: [MatSliderModule],
+  providers: [ImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

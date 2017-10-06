@@ -5,10 +5,11 @@
   <canvas id="canvas" class="canvas" width="500" height="500">
     </canvas>
 </div>
+
 <div *ngIf="image" class="img-preview">
   <h4>{{ image.name }}</h4>
   <img src="/assets/img/test/{{image.name}}">
   <p>{{ image.size }} bytes</p>  
 </div>
 
-
+<!-- <button (click)="blackAndWhiteFilter()">set brightness</button> -->
