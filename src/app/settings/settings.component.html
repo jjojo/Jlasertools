@@ -1,3 +1,28 @@
-<h1> Settings </h1>
-
-
+<div class="container">
+    <h1>Settings</h1>
+    <form>
+      <div class="form-group">
+        <label for="name">Brightness</label>
+        <md-slider
+          (input)="onBrightnessChange($event)"
+          (mouseup)="setBrightness()"
+          class="example-margin"
+          [disabled]="disabled"
+          [max]="max"
+          [min]="min"
+          [step]="step"
+          [value]="value">
+        </md-slider>
+      </div>
+      {{bValue}}
+ 
+      <!-- <div class="form-group">
+        <label for="alterEgo">Alter Ego</label>
+        <input type="text" class="form-control" id="alterEgo">
+      </div> -->
+ 
+      <!-- <button type="submit" class="btn btn-success">Submit</button> -->
+      
+    </form>
+    
+</div>
