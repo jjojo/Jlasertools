@@ -32,17 +32,13 @@ export class ImagePreviewComponent implements OnInit {
         this.canvas.add(new fabric.Line([ i * grid, 0, i * grid, 500], { stroke: '#ccc', selectable: false }));
         this.canvas.add(new fabric.Line([ 0, i * grid, 500, i * grid], { stroke: '#ccc', selectable: false }));
       }
-
-
       // render canvas to show grid
       this.canvas.renderAll();
   }
 
   handleDrop(e) {
-    console.log(this.canvas)
     this.file = e.dataTransfer.files[0];
     const reader = new FileReader();
-    //const filter = new fabric.Image.filters.Grayscale();
 
     reader.onload = (imgFile) => {
       console.log(imgFile);
@@ -55,34 +51,29 @@ export class ImagePreviewComponent implements OnInit {
           scaleX: img.width >= img.height ? (this.canvas.width*0.8) / img.width : 300/img.height,
           scaleY: img.height >= img.width ? (this.canvas.height*0.8) : 300/img.width
         });
-      
+
         this.image = img;
         this.setBrightness( 0 );
-        this.blackAndWhiteFilter()
+        this.blackAndWhiteFilter();
 
         this.canvas.add(imgObject)
-          //.renderAll()
           .setActiveObject(imgObject)
           .toDataURL({format: 'png', quality: 0.8});
-
-        
       });
     };
     reader.readAsDataURL(this.file);
-    
+
     return false;
   }
 
   setBrightness( value ) {
     console.log(this.image)
     if ( typeof(this.image.filters[0]) === 'undefined') {
-      console.log("sets brightness filter")
       const filter = new fabric.Image.filters.Brightness({
         brightness: value
       });
       this.image.filters.push(filter);
     } else {
-      console.log("changes brightness filter")
       this.image.filters[0].brightness = value;
     }
     this.image.applyFilters( (img) => {
